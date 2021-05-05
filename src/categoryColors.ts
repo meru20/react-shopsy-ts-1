@@ -1,3 +1,6 @@
+
+//helper function to style our state
+
 enum TypeColor {
 electronics= '#F5C10D',
 jewelery= '#487BFF',
@@ -18,3 +21,7 @@ export const setTypeColor = (type: string): string => {
             return '#333';  
     }     
 }
+
+// export const priceDecimal = (price:number): string => {
+//     return price.toFixed(2);
+// }

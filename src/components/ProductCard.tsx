@@ -31,9 +31,10 @@ const ProductCard: React.FC<CardProps> = ({ product, fixedPrice}) => {
             <Link to={`/products/${product.id}`}>{product.title}</Link>
           </h5>
           <div className='d-flex justify-content-between align-items-center'>
-          {/* <strong id='price' >${product.price}</strong> */}
+          {/* <strong id='price' >${`${priceDecimal(+product.price)}`}</strong> */}
             <strong id='price' >${`${fixedPrice(+product.price)}`}</strong>
             <span className='badge badge-pill text-white mx-1'
+            // <span className={`badge ${setTypeColor(product.category)}`}
             style={{ backgroundColor: setTypeColor(product.category) }}>
               {product.category}
               </span>
