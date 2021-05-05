@@ -7,6 +7,7 @@ const initialState = {
   cart: [],
   product: undefined,
   getProducts: () => {},
+  fixedPrice: () => {},
   getSingleProduct: () => {},
 };
 
@@ -31,6 +32,7 @@ const appReducer = (state: any, action: any) => {
     case 'GET_SINGLE_PRODUCT':
       // when case matches, bind the payload to the product property in state
       return { ...state, product: action.payload };
+      
     default:
       return state;
   }
@@ -58,12 +60,27 @@ export const GlobalProvider: React.FC = ({ children }) => {
   const getSingleProduct = async (productId: number) => {
     try {
       let { data } = await instance.get(`/products/${productId}`);
-      console.log(data);
+      console.log('data--->',data);
       dispatch({ type: 'GET_SINGLE_PRODUCT', payload: data });
     } catch (e) {
       console.log(e);
     }
   };
+
+  const fixedPrice =  (productPrice : number) => {
+    try {
+      let priceRounded = productPrice.toFixed(2);
+   
+         console.log('price ---->', priceRounded)
+         return priceRounded;
+        
+
+    }
+    catch (e){
+      console.log(e)
+
+    }
+  }
 
   return (
     <GlobalContext.Provider
@@ -73,6 +90,7 @@ export const GlobalProvider: React.FC = ({ children }) => {
         product: state.product,
         getProducts,
         getSingleProduct,
+        fixedPrice,
       }}>
       {children} {/* <AppRouter/> */}
     </GlobalContext.Provider>

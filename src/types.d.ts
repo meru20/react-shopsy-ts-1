@@ -24,5 +24,6 @@ type InitialStateType = {
     cart: Product[];
     product: Product | undefined;
     getProducts: () => void;
+    fixedPrice: (productPrice: number) => void;
     getSingleProduct: (productId:number) => void;
 };

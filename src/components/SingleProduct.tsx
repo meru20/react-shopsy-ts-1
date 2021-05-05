@@ -1,9 +1,13 @@
-import React from 'react';
+import React,{useContext} from 'react';
+import { GlobalContext } from '../context/GlobalContext';
 
 interface SingleCardProps {
     product: Product;
+    fixedPrice:(productPrice: number) => void;
   }
-const SingleProductCard: React.FC<SingleCardProps> = ({product}) => {
+const SingleProductCard: React.FC<SingleCardProps> = ({product,fixedPrice}) => {
+   
+    
     
       
     return (
@@ -27,7 +31,7 @@ const SingleProductCard: React.FC<SingleCardProps> = ({product}) => {
                   <h3 className='card-title'>
                     {product.title}
                     <div className=''>
-                      <small className='text-info'>${product.price}</small>
+                      <small className='text-info'>${`${fixedPrice(+product.price)}`}</small>
                     </div>
                   </h3>
                   {/* product details */}
