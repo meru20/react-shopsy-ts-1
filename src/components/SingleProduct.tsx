@@ -1,5 +1,6 @@
-import React,{useContext} from 'react';
-import { GlobalContext } from '../context/GlobalContext';
+import React from 'react';
+
+import { setTypeColor } from '../categoryColors';
 
 interface SingleCardProps {
     product: Product;
@@ -39,9 +40,10 @@ const SingleProductCard: React.FC<SingleCardProps> = ({product,fixedPrice}) => {
                     <h4>Description</h4>
                     <p>{product.description}</p>
                     <div>
-                      <span className='badge badge-warning'>
+                    <span className='badge badge-pill text-white mx-1'
+                     style={{ backgroundColor: setTypeColor(product.category) }}>
                         {product.category}
-                      </span>
+                    </span>
                     </div>
                   </div>
                   {/* product add to cart */}

@@ -1,6 +1,6 @@
 import React,{useContext} from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import {GlobalContext} from '../context/GlobalContext';
+import { setTypeColor } from '../categoryColors';
 
 interface CardProps {
   product: Product;
@@ -33,7 +33,10 @@ const ProductCard: React.FC<CardProps> = ({ product, fixedPrice}) => {
           <div className='d-flex justify-content-between align-items-center'>
           {/* <strong id='price' >${product.price}</strong> */}
             <strong id='price' >${`${fixedPrice(+product.price)}`}</strong>
-            <span className='badge badge-warning'>{product.category}</span>
+            <span className='badge badge-pill text-white mx-1'
+            style={{ backgroundColor: setTypeColor(product.category) }}>
+              {product.category}
+              </span>
           </div>
         </div>
       </span>
