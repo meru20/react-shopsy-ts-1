@@ -4,10 +4,12 @@ import { GlobalContext } from '../context/GlobalContext';
 import '../App.css';
 
 const HomePage = () => {
-  const { products, getProducts } = useContext(GlobalContext);
+  const { products, getProducts, fixedPrice} = useContext(GlobalContext);
+ 
 
   useEffect(() => {
     getProducts();
+    
   }, []);
 
   return (
@@ -22,7 +24,7 @@ const HomePage = () => {
         {products.map((product, i) => {
           return (
             <div className='col-sm-12 col-md-3 mb-3' key={i}>
-              <ProductCard product={product} />
+              <ProductCard product={product} fixedPrice={fixedPrice} />
             </div>
           );
         })}

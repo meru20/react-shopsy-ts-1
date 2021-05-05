@@ -4,7 +4,7 @@ import { GlobalContext } from '../context/GlobalContext';
 import SingleCardProduct from '../components/SingleProduct';
 
 const ProductPage = () => {
-  const { product, getSingleProduct } = useContext(GlobalContext);
+  const { product, getSingleProduct,fixedPrice } = useContext(GlobalContext);
   const { productId } = useParams<{ productId: string }>();
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const ProductPage = () => {
       </div>
 
       {/* Product Card */}
-      <SingleCardProduct product={product}/>
+      <SingleCardProduct product={product} fixedPrice={fixedPrice}/>
      
     </div>
   );
